@@ -1,0 +1,44 @@
+@use "./colors" as *;
+@use "./resets";
+
+nav {
+  display: flex;
+  padding: 2rem;
+  align-items: center;
+  width: 100%;
+}
+
+.hamburger {
+  display: none;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-left: 3rem;
+  align-items: center;
+  a {
+    font-weight: 500;
+    text-transform: capitalize;
+    color: $GrayishViolet;
+  }
+}
+
+.decorated-btn {
+  background: $Cyan;
+  color: #fff !important;
+  padding: 0.5rem 1.5rem;
+  border-radius: 2rem;
+}
+
+.navlinks {
+  display: flex;
+  gap: 2rem;
+}
+
+.auth {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
