@@ -46,7 +46,6 @@ const Home = () => {
       <Navbar />
       <main>
         <section
-          role="contentinfo"
           aria-label="intro-section"
           className="intro"
         >
@@ -63,7 +62,6 @@ const Home = () => {
           <img src={homesektop} alt="" />
         </section>
         <section
-          role="contentinfo"
           aria-label="shorten-url"
           className="convertor-wrapper"
         >
@@ -121,7 +119,6 @@ const Home = () => {
               })}
         </section>
         <section
-          role="contentinfo"
           aria-label="statistics"
           className="stats-wrapper"
         >
