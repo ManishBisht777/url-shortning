@@ -45,10 +45,7 @@ const Home = () => {
     <>
       <Navbar />
       <main>
-        <section
-          aria-label="intro-section"
-          className="intro"
-        >
+        <section aria-label="intro-section" className="intro">
           <article>
             <h1>More than just shorter links</h1>
             <p>
@@ -61,10 +58,7 @@ const Home = () => {
           </article>
           <img src={homesektop} alt="" />
         </section>
-        <section
-          aria-label="shorten-url"
-          className="convertor-wrapper"
-        >
+        <section aria-label="shorten-url" className="convertor-wrapper">
           <form className="convertor">
             <label htmlFor="search">Enter Url</label>
             <input
@@ -118,10 +112,7 @@ const Home = () => {
                 );
               })}
         </section>
-        <section
-          aria-label="statistics"
-          className="stats-wrapper"
-        >
+        <section aria-label="statistics" className="stats-wrapper">
           <article>
             <h2>Advanced Statistics</h2>
             <p>
@@ -170,11 +161,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section
-          role="contentinfo"
-          aria-labelledby="boost-links"
-          className="boost"
-        >
+        <section aria-label="boost-links" className="boost">
           <h3>Boost your link today</h3>
           <a className="decorated-btn" href="/">
             Get started
