@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "../footer/Footer";
 import Navbar from "../navbar/Navbar";
 import homesektop from "../../images/illustration-working.svg";
@@ -6,13 +6,44 @@ import homesektop from "../../images/illustration-working.svg";
 import icon_recog from "../../images/icon-brand-recognition.svg";
 import icon_records from "../../images/icon-detailed-records.svg";
 import icon_custom from "../../images/icon-fully-customizable.svg";
+import { getPrevURl, getShortenURl, pushUrl } from "../../utilities/utility";
 
 const Home = () => {
+  const [inputUrl, setinputUrl] = useState("");
+  const [data, setdata] = useState(null);
+  const [prevurl, setprevurl] = useState(null);
+  const [error, seterror] = useState(false);
+
+  function copyToClipboard(e) {
+    navigator.clipboard.writeText(e.target.innerText);
+    console.log("coied");
+  }
+
+  const shortenUrl = async () => {
+    let obj = await getShortenURl(inputUrl);
+
+    if (obj.ok) {
+      pushUrl(obj.result.original_link, obj.result.short_link);
+      seterror(false);
+    } else {
+      seterror(true);
+    }
+    setdata(obj);
+  };
+
+  useEffect(() => {
+    setprevurl(JSON.parse(getPrevURl()));
+  }, [data]);
+
   return (
     <>
       <Navbar />
       <main>
-        <section className="intro">
+        <section
+          role="contentinfo"
+          aria-label="intro-section"
+          className="intro"
+        >
           <article>
             <h1>More than just shorter links</h1>
             <p>
@@ -25,29 +56,66 @@ const Home = () => {
           </article>
           <img src={homesektop} alt="" />
         </section>
-        <section className="convertor-wrapper">
-          <div className="convertor">
+        <section
+          role="contentinfo"
+          aria-label="shorten-url"
+          className="convertor-wrapper"
+        >
+          <form className="convertor">
+            <label htmlFor="search">Enter Url</label>
             <input
               type="text"
               aria-label="search"
               name="search"
+              id="search"
+              className={error ? "error" : ""}
               placeholder="shorten a link here"
+              onChange={(e) => {
+                setinputUrl(e.target.value);
+              }}
             />
-            <button className="decorated-btn" type="button">
+            <button
+              className="decorated-btn"
+              type="button"
+              onClick={() => {
+                shortenUrl();
+              }}
+            >
               Shorten it!
             </button>
-          </div>
-          <div className="prev-url">
-            <p>https://frontendmentor.io</p>
-            <div className="short">
-              <p>https://rel.ink/k4lkyk</p>
-              <button className="decorated-btn" aria-expanded="false">
-                Copy
-              </button>
-            </div>
-          </div>
+          </form>
+
+          {prevurl &&
+            prevurl
+              .slice(0)
+              .reverse()
+              .map((prev, index) => {
+                if (!prev) return <></>;
+
+                return (
+                  <div className="prev-url" key={`prev.shorturl${index}`}>
+                    <p>{prev.url}</p>
+                    <div className="short">
+                      <p>{prev.shorturl}</p>
+                      <button
+                        className="decorated-btn"
+                        aria-expanded="false"
+                        onClick={(e) => {
+                          copyToClipboard(e);
+                        }}
+                      >
+                        Copy
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
         </section>
-        <section className="stats-wrapper">
+        <section
+          role="contentinfo"
+          aria-label="statistics"
+          className="stats-wrapper"
+        >
           <article>
             <h2>Advanced Statistics</h2>
             <p>
@@ -96,9 +164,15 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className="boost">
+        <section
+          role="contentinfo"
+          aria-labelledby="boost-links"
+          className="boost"
+        >
           <h3>Boost your link today</h3>
-          <a className="decorated-btn">Get started</a>
+          <a className="decorated-btn" href="/">
+            Get started
+          </a>
         </section>
       </main>
 

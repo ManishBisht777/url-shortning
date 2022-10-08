@@ -12,13 +12,19 @@ const Footer = () => {
       <ul>
         <p>Features</p>
         <li>
-          <a href="/">Link Shortening</a>
+          <a aria-label="shortenlink" href="/">
+            Link Shortening
+          </a>
         </li>
         <li>
-          <a href="/">Branded Links</a>
+          <a aria-label="branded-links" href="/">
+            Branded Links
+          </a>
         </li>
         <li>
-          <a href="/">Analytics</a>
+          <a aria-label="analytics" href="/">
+            Analytics
+          </a>
         </li>
       </ul>
       <ul>
@@ -36,30 +42,38 @@ const Footer = () => {
       <ul>
         <p>company</p>
         <li>
-          <a href="/">About</a>
+          <a aria-label="about" href="/">
+            About
+          </a>
         </li>
         <li>
-          <a href="/">Our Team</a>
+          <a aria-label="out-team" href="/">
+            Our Team
+          </a>
         </li>
         <li>
-          <a href="/">Careers</a>
+          <a aria-label="carrers" href="/">
+            Careers
+          </a>
         </li>
         <li>
-          <a href="/">Contact</a>
+          <a aria-label="contact" href="/">
+            Contact
+          </a>
         </li>
       </ul>
 
       <div className="socials">
-        <a href="/">
+        <a aria-label="facebook-link" href="/">
           <img src={facebook} alt="" />
         </a>
-        <a href="/">
+        <a aria-label="instagram-link" href="/">
           <img src={instagram} alt="" />
         </a>
-        <a href="/">
+        <a aria-label="twitter-link" href="/">
           <img src={twitter} alt="" />
         </a>
-        <a href="/">
+        <a aria-label="pinterest-link" href="/">
           <img src={pinterest} alt="" />
         </a>
       </div>

@@ -6,6 +6,7 @@ nav {
   padding: 2rem;
   align-items: center;
   width: 100%;
+  justify-content: space-between;
 }
 
 .hamburger {
@@ -30,6 +31,13 @@ nav {
   color: #fff !important;
   padding: 0.5rem 1.5rem;
   border-radius: 2rem;
+  border: 0.1rem solid $Cyan;
+
+  &:focus-visible,
+  &:focus {
+    border: 0.1rem solid $VeryDarkViolet;
+    outline: none;
+  }
 }
 
 .navlinks {
@@ -41,4 +49,63 @@ nav {
   display: flex;
   gap: 2rem;
   align-items: center;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hamburger[aria-expanded="false"] + .main-nav {
+    display: none;
+  }
+
+  .main-nav {
+    position: absolute;
+    width: auto;
+    top: 6rem;
+    left: 2rem;
+    right: 2rem;
+    padding: 2rem;
+    flex-direction: column;
+    background: $DarkViolet;
+    border-radius: 0.5rem;
+    margin-left: 0;
+    animation: fadeIn 0.5s ease-in-out;
+
+    a {
+      color: #fff;
+    }
+
+    ul {
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 2rem;
+      width: 100%;
+      border-bottom: 1px solid $GrayishViolet;
+    }
+  }
+
+  .main-nav {
+    gap: 1rem;
+  }
+  .auth {
+    flex-direction: column;
+    width: 100%;
+
+    .decorated-btn {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .hamburger {
+    display: flex;
+    cursor: pointer;
+  }
 }

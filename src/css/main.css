@@ -43,11 +43,16 @@ body {
   font-size: 1.125rem;
 }
 
+label[for=search] {
+  display: none;
+}
+
 nav {
   display: flex;
   padding: 2rem;
   align-items: center;
   width: 100%;
+  justify-content: space-between;
 }
 
 .hamburger {
@@ -64,7 +69,7 @@ nav {
 .main-nav a {
   font-weight: 500;
   text-transform: capitalize;
-  color: hsl(257deg, 7%, 63%);
+  color: hsl(0deg, 1%, 46%);
 }
 
 .decorated-btn {
@@ -72,6 +77,11 @@ nav {
   color: #fff !important;
   padding: 0.5rem 1.5rem;
   border-radius: 2rem;
+  border: 0.1rem solid hsl(180deg, 66%, 49%);
+}
+.decorated-btn:focus-visible, .decorated-btn:focus {
+  border: 0.1rem solid hsl(260deg, 8%, 14%);
+  outline: none;
 }
 
 .navlinks {
@@ -85,6 +95,67 @@ nav {
   align-items: center;
 }
 
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@media screen and (max-width: 768px) {
+  .hamburger[aria-expanded=false] + .main-nav {
+    display: none;
+  }
+  .main-nav {
+    position: absolute;
+    width: auto;
+    top: 6rem;
+    left: 2rem;
+    right: 2rem;
+    padding: 2rem;
+    flex-direction: column;
+    background: hsl(257deg, 27%, 26%);
+    border-radius: 0.5rem;
+    margin-left: 0;
+    -webkit-animation: fadeIn 0.5s ease-in-out;
+            animation: fadeIn 0.5s ease-in-out;
+  }
+  .main-nav a {
+    color: #fff;
+  }
+  .main-nav ul {
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2rem;
+    width: 100%;
+    border-bottom: 1px solid hsl(0deg, 1%, 46%);
+  }
+  .main-nav {
+    gap: 1rem;
+  }
+  .auth {
+    flex-direction: column;
+    width: 100%;
+  }
+  .auth .decorated-btn {
+    width: 100%;
+    text-align: center;
+  }
+  .hamburger {
+    display: flex;
+    cursor: pointer;
+  }
+}
 .intro {
   display: flex;
   width: 100%;
@@ -110,7 +181,7 @@ nav {
   line-height: 6rem;
 }
 .intro article p {
-  color: hsl(257deg, 7%, 63%);
+  color: hsl(0deg, 1%, 46%);
   width: 80%;
 }
 .intro article a {
@@ -139,17 +210,32 @@ nav {
   gap: 2rem;
   width: 80vw;
   justify-content: space-between;
+  position: relative;
 }
 .convertor input {
   padding: 1rem;
   border-radius: 0.5rem;
   border: none;
   width: 85%;
+  position: relative;
 }
 .convertor button {
   width: 15%;
   border-radius: 0.5rem;
   text-align: center;
+  position: relative;
+}
+.convertor .error {
+  border: 0.2rem solid hsl(0deg, 87%, 67%);
+}
+.convertor .error::after {
+  content: "Please add a link";
+  text-transform: capitalize;
+  color: hsl(0deg, 87%, 67%);
+  position: absolute;
+  top: 3rem;
+  width: 10rem;
+  height: 10rem;
 }
 
 .prev-url {
@@ -194,7 +280,7 @@ nav {
   align-items: center;
 }
 .stats-wrapper article p {
-  color: hsl(257deg, 7%, 63%);
+  color: hsl(0deg, 1%, 20%);
   font-size: 1rem;
   max-width: 30rem;
   text-align: center;
@@ -284,6 +370,94 @@ nav {
   font-weight: 700;
 }
 
+@media screen and (max-width: 1000px) {
+  .intro article h1 {
+    font-size: 3rem;
+    line-height: 3.5rem;
+  }
+  .decorated-btn {
+    padding: 0.5rem 1rem;
+  }
+  .convertor {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .convertor input {
+    padding: 0.6rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .intro {
+    flex-direction: column-reverse;
+  }
+  .intro img {
+    width: 100%;
+    margin-right: -4rem;
+  }
+  .intro article {
+    padding: 1rem;
+    width: 100%;
+    justify-content: center;
+  }
+  .intro article h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+  .intro article p {
+    width: 100%;
+    text-align: center;
+  }
+  .intro article a {
+    align-self: center;
+  }
+  .convertor {
+    flex-direction: column;
+  }
+  .convertor input {
+    width: 100%;
+  }
+  .convertor button {
+    width: auto;
+  }
+  .prev-url {
+    flex-direction: column;
+    gap: 0.2rem;
+    align-items: flex-start;
+  }
+  .short {
+    padding-top: 1rem;
+    border-top: 0.1rem solid hsl(0deg, 0%, 92%);
+    width: 100%;
+    flex-direction: column;
+    gap: 0.2rem;
+    align-items: flex-start;
+  }
+  .short button {
+    width: 90%;
+    text-align: center;
+  }
+  .stats-wrapper {
+    padding: 1rem;
+  }
+  .stats-wrapper article h2 {
+    font-size: 1.7rem;
+  }
+  .stats {
+    flex-direction: column;
+  }
+  .stats::before {
+    transform: rotate(90deg);
+    width: 40rem;
+    left: -50%;
+  }
+  .stat:nth-child(2), .stat:nth-child(3) {
+    margin-top: 2rem;
+  }
+  .boost h3 {
+    font-size: 1.5rem;
+  }
+}
 footer {
   display: flex;
   padding: 2rem;
@@ -314,4 +488,19 @@ footer ul a {
 }
 .socials img {
   filter: none;
+}
+
+@media screen and (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+  footer ul {
+    align-items: center;
+    gap: 1rem;
+  }
+  footer ul p {
+    margin-bottom: 0;
+  }
 }/*# sourceMappingURL=main.css.map */

@@ -56,18 +56,35 @@
   gap: 2rem;
   width: 80vw;
   justify-content: space-between;
+  position: relative;
 
   input {
     padding: 1rem;
     border-radius: 0.5rem;
     border: none;
     width: 85%;
+    position: relative;
   }
 
   button {
     width: 15%;
     border-radius: 0.5rem;
     text-align: center;
+    position: relative;
+  }
+
+  .error {
+    border: 0.2rem solid $Red;
+
+    &::after {
+      content: "Please add a link";
+      text-transform: capitalize;
+      color: $Red;
+      position: absolute;
+      top: 3rem;
+      width: 10rem;
+      height: 10rem;
+    }
   }
 }
 
@@ -116,7 +133,7 @@
     align-items: center;
 
     p {
-      color: $GrayishViolet;
+      color: hsl(0deg, 1%, 20%);
       font-size: 1rem;
       max-width: 30rem;
       text-align: center;
@@ -204,5 +221,118 @@
   .decorated-btn {
     padding: 1rem 3rem;
     font-weight: 700;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .intro {
+    article {
+      h1 {
+        font-size: 3rem;
+        line-height: 3.5rem;
+      }
+    }
+  }
+
+  .decorated-btn {
+    padding: 0.5rem 1rem;
+  }
+
+  .convertor {
+    padding: 1rem;
+    gap: 1rem;
+    input {
+      padding: 0.6rem;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .intro {
+    flex-direction: column-reverse;
+
+    img {
+      width: 100%;
+      margin-right: -4rem;
+    }
+
+    article {
+      padding: 1rem;
+      width: 100%;
+      justify-content: center;
+
+      h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        line-height: 3rem;
+      }
+      p {
+        width: 100%;
+        text-align: center;
+      }
+      a {
+        align-self: center;
+      }
+    }
+  }
+
+  .convertor {
+    flex-direction: column;
+    input {
+      width: 100%;
+    }
+    button {
+      width: auto;
+    }
+  }
+
+  .prev-url {
+    flex-direction: column;
+    gap: 0.2rem;
+    align-items: flex-start;
+  }
+  .short {
+    padding-top: 1rem;
+    border-top: 0.1rem solid $Gray;
+    width: 100%;
+    flex-direction: column;
+    gap: 0.2rem;
+    align-items: flex-start;
+
+    button {
+      width: 90%;
+      text-align: center;
+    }
+  }
+
+  .stats-wrapper {
+    padding: 1rem;
+    article {
+      h2 {
+        font-size: 1.7rem;
+      }
+    }
+  }
+  .stats {
+    flex-direction: column;
+
+    &::before {
+      transform: rotate(90deg);
+      width: 40rem;
+      left: -50%;
+    }
+  }
+
+  .stat {
+    &:nth-child(2),
+    &:nth-child(3) {
+      margin-top: 2rem;
+    }
+  }
+
+  .boost {
+    h3 {
+      font-size: 1.5rem;
+    }
   }
 }
