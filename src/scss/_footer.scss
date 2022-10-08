@@ -18,16 +18,18 @@ footer {
     text-transform: capitalize;
     font-size: 1rem;
 
-    p {
-      color: #fff;
-      margin-bottom: 1rem;
-    }
     a {
       color: rgb(180, 180, 180);
     }
   }
 }
 
+.foot-links {
+  p {
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+}
 .socials {
   display: flex;
   gap: 1rem;
@@ -45,9 +47,12 @@ footer {
     ul {
       align-items: center;
       gap: 1rem;
-      p {
-        margin-bottom: 0;
-      }
+    }
+  }
+
+  .foot-links {
+    p {
+      text-align: center;
     }
   }
 }

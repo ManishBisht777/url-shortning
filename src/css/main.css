@@ -474,12 +474,13 @@ footer ul {
   text-transform: capitalize;
   font-size: 1rem;
 }
-footer ul p {
-  color: #fff;
-  margin-bottom: 1rem;
-}
 footer ul a {
   color: rgb(180, 180, 180);
+}
+
+.foot-links p {
+  color: #fff;
+  margin-bottom: 1rem;
 }
 
 .socials {
@@ -500,7 +501,7 @@ footer ul a {
     align-items: center;
     gap: 1rem;
   }
-  footer ul p {
-    margin-bottom: 0;
+  .foot-links p {
+    text-align: center;
   }
 }/*# sourceMappingURL=main.css.map */
