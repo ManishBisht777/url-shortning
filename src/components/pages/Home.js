@@ -13,10 +13,16 @@ const Home = () => {
   const [data, setdata] = useState(null);
   const [prevurl, setprevurl] = useState(null);
   const [error, seterror] = useState(false);
+  const [copyStyle, setcopyStyle] = useState(false);
 
-  function copyToClipboard(e) {
-    navigator.clipboard.writeText(e.target.innerText);
+  function copyhandler(e) {
+    navigator.clipboard.writeText(e.target.value);
     console.log("coied");
+
+    setcopyStyle(true);
+    setTimeout(() => {
+      setcopyStyle(false);
+    }, 30000);
   }
 
   const shortenUrl = async () => {
@@ -98,10 +104,13 @@ const Home = () => {
                     <div className="short">
                       <p>{prev.shorturl}</p>
                       <button
-                        className="decorated-btn"
+                        className={
+                          copyStyle ? "copy decorated-btn" : "decorated-btn"
+                        }
                         aria-expanded="false"
+                        value={prev.shorturl}
                         onClick={(e) => {
-                          copyToClipboard(e);
+                          copyhandler(e);
                         }}
                       >
                         Copy

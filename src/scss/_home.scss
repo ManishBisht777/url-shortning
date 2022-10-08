@@ -114,6 +114,11 @@
   button {
     border-radius: 0.3rem;
   }
+
+  .copy {
+    background: $hsl(255, 11%, 22%) !important;
+    color: #fff !important;
+  }
 }
 
 .stats-wrapper {
